@@ -1,0 +1,29 @@
+[user]
+        name = Momoko Asai
+        email = mokokko@users.noreply.github.com
+[color]
+        ui = auto
+[core]
+        editor = /usr/bin/vim
+[pager]
+        log = diff-highlight | less
+        show = diff-highlight | less
+        diff = diff-highlight | less
+
+[alias]
+        co = checkout
+        st = status
+        ci = commit -a
+        di = diff
+        br = branch
+        s = status
+        sh = show
+        shs = show --stat=,200
+        ls = log --stat=,200 --decorate --graph --format=format:'%h: %Cred%ai %Cblue%aN | %Creset%s'
+        l = log -50 --decorate --graph --format=format:'%h: %Cred%ai %Cblue%aN | %Creset%s'
+        d = diff
+        b = branch
+        ba = branch -a
+        graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[diff "excel"]
+        textconv = xls2csv_jp -c /dev/stdout -q -f -b WINDOWS-1252 -x
