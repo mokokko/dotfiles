@@ -5,6 +5,8 @@ SOURCE="${BASH_SOURCE[0]}"
 dir="$( builtin cd -P "$( dirname "$SOURCE" )" && builtin pwd )"
 cd $dir
 
+# https://github.com/git/git/tree/master/contrib
+
 # .bash.d/git-completion.bash
 curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > .bash.d/git-completion.bash
 
