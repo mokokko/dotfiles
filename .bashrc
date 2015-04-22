@@ -184,3 +184,13 @@ function timer_stop {
 trap 'timer_start' DEBUG
 PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/;;/;/')
 
+
+echo "
+=====================================
+
+   I'm on the right track, baby
+      I was born this way
+
+  Don't be a drag, just be a queen
+ 
+====================================="
