@@ -156,7 +156,18 @@ fi
 
 #### misc tweaks
 alias grep="grep --color=auto"
-alias ls="ls --color=tty"
+case "${OSTYPE}" in
+darwin*)
+  alias ls="ls -G"
+  alias ll="ls -lG"
+  alias la="ls -laG"
+  ;;
+linux*)
+  alias ls='ls --color=tty'
+  alias ll='ls -l --color'
+  alias la='ls -la --color'
+  ;;
+esac
 
 function conv-time () {
   for arg in "$@"; do
