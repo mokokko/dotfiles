@@ -64,7 +64,7 @@ if [[ $IS_SCREEN ]]; then
   # screen
   prompt_screen='\[\033k\033\\\]'
 fi
-_PROMPT1='\[\e[0;36m\]\t \[\e[34m\]\h \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
+_PROMPT1='\[\e[0;36m\]\t \[\e[32m\]\h \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
 _PROMPT2="\\n$prompt_screen\$ "
 PS1=$_PROMPT1$_PROMPT2
 
