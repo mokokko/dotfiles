@@ -161,6 +161,7 @@ darwin*)
   alias ls="ls -G"
   alias ll="ls -lG"
   alias la="ls -laG"
+  export LSCOLORS=gxfxcxdxbxegedabagacad
   ;;
 linux*)
   alias ls='ls --color=tty'
