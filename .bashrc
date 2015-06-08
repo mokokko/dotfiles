@@ -190,7 +190,7 @@ function timer_stop {
   timer_show=$(($SECONDS - $timer))
   unset timer
   if (( $timer_show > 3 )); then
-    echo -e "TOO SLOW: $timer_show secs."'\e[m'
+    echo -e "TOO SLOW: $timer_show secs."
   fi
 }
 trap 'timer_start' DEBUG
