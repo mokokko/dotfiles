@@ -3,7 +3,7 @@
 ```bash
 git clone git@github.com:mokokko/dotfiles.git ~/.dotfiles
 
-echo 'source $HOME/.dotfiles/.bashrc' >> ~/.bash_profile
+echo 'source $HOME/.bashrc' >> ~/.bash_profile
 echo 'source $HOME/.dotfiles/.bashrc' >> ~/.bashrc
 
 
