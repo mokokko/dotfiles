@@ -195,3 +195,7 @@ function timer_stop {
 }
 trap 'timer_start' DEBUG
 PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/;;/;/')
+
+
+# iTerm background color
+alias ssh=~/.dotfiles/bin/ssh-host-color
