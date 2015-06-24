@@ -105,6 +105,8 @@ set autoindent
 " set cindent
 
 set tabstop=2
+set softtabstop=0 " set 0 to set same value as tabstop
+set shiftwidth=4
 set expandtab
 set shiftwidth=2
 
