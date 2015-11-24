@@ -13,4 +13,6 @@ ln -s ~/.dotfiles/.gitconfig ~/
 ln -s ~/.dotfiles/.vimrc ~/
 mkdir -p ~/.vim/bundle
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
+# if you want use 'diff-highlight', need git version 1.9
 ```
