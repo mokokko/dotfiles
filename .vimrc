@@ -24,6 +24,8 @@ NeoBundle 'flazz/vim-colorschemes'
 "" neocomplcache
 NeoBundle 'Shougo/neocomplcache'
 
+NeoBundle 'rking/ag.vim'
+
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 NeoBundle 'dyng/ctrlsf.vim'
@@ -106,7 +108,7 @@ set hidden
 
 set tabstop=2
 set softtabstop=0 " set 0 to set same value as tabstop
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 
