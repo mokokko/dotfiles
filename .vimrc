@@ -100,13 +100,12 @@ set hidden
 "set list
 "set listchars=tab:>-,extends:<,trail:-,eol:\
 
-" set autoindent
+set autoindent
 " set cindent
 
 set tabstop=2
-set softtabstop=0 " set 0 to set same value as tabstop
-set shiftwidth=2
 set expandtab
+set shiftwidth=2
 
 
 " 変更があれば再読み込み
@@ -379,3 +378,5 @@ function! s:ChangeCurrentDir(directory, bang)
         pwd
     endif
 endfunction
+
+hi Comment ctermfg=gray
