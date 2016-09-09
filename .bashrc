@@ -199,3 +199,4 @@ PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/
 
 # iTerm background color
 alias ssh=~/.dotfiles/bin/ssh-host-color
+alias be='bundle exec'
