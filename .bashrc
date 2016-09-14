@@ -203,3 +203,10 @@ alias be='bundle exec'
 rm-i () {
   find . -inum $1 -exec rm -f {} \;
 }
+
+# dstat
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
