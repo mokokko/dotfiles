@@ -200,6 +200,7 @@ PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/
 # iTerm background color
 alias ssh=~/.dotfiles/bin/ssh-host-color
 alias be='bundle exec'
+alias bers='bundle exec rails s -b 0.0.0.0'
 rm-i () {
   find . -inum $1 -exec rm -f {} \;
 }
