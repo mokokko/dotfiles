@@ -217,3 +217,25 @@ alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
 alias uuuu='cd ../../../..'
+
+# peco
+export PATH=`pwd`/peco_linux_amd64:$PATH
+## 重複履歴を無視
+export HISTCONTROL=ignoreboth:erasedups
+
+## 履歴保存対象から外す
+export HISTIGNORE="fg*:bg*:history*:wmctrl*:exit*:ls -al:cd ~"
+
+## コマンド履歴にコマンドを使ったの時刻を記録する
+export HISTTIMEFORMAT='%Y%m%d %T '
+
+export HISTSIZE=10000
+
+## settings for peco
+_replace_by_history() {
+    local l=$(HISTTIMEFORMAT= history | cut -d" " -f4- | tac | sed -e 's/^\s*[0-9]*    \+\s\+//' | peco --query "$READLINE_LINE")
+    READLINE_LINE="$l"
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": _replace_by_history'
+bind    '"\C-xr": reverse-search-history'
