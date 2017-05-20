@@ -1,5 +1,7 @@
 # -*- coding:utf-8; mode:sh; sh-basic-offset:2; sh-indentation:2; -*-
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 #### basic
 # Inspect system environment
 [[ $- == *i* ]] && IS_INTERACTIVE_SH=1
@@ -91,13 +93,13 @@ fi
 
 #### ruby
 cdgem () {
-  local bundle_gems=$(bundle list | grep '\*' | sed -e 's/^ *\* *//g')
+  local bundle_gems="$(bundle list | grep '\*' | sed -e 's/^ *\* *//g')"
   if [[ -n "$bundle_gems" ]]; then
-    gem=$(echo "$bundle_gems" | peco | cut -d \  -f 1)
+    gem=$(echo "$bundle_gems" | fzf --reverse | cut -d \  -f 1)
     [[ -z "$gem" ]] && return 1
     cd $(bundle show $gem)
   else
-    gem=$(gem list | peco | cut -d \  -f 1)
+    gem=$(gem list | fzf --reverse | cut -d \  -f 1)
     [[ -z "$gem" ]] && return 1
     if ruby --version | grep 'ruby 2' >/dev/null; then
       cd $(ruby -e 'puts Gem::Specification.find_by_name(ARGV[0]).full_gem_path' -- $gem)
@@ -106,6 +108,7 @@ cdgem () {
     fi
   fi
 }
+
 
 #### awscli
 if type -P aws_completer >/dev/null; then
@@ -217,25 +220,3 @@ alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
 alias uuuu='cd ../../../..'
-
-# peco
-export PATH=`pwd`/peco_linux_amd64:$PATH
-## 重複履歴を無視
-export HISTCONTROL=ignoreboth:erasedups
-
-## 履歴保存対象から外す
-export HISTIGNORE="fg*:bg*:history*:wmctrl*:exit*:ls -al:cd ~"
-
-## コマンド履歴にコマンドを使ったの時刻を記録する
-export HISTTIMEFORMAT='%Y%m%d %T '
-
-export HISTSIZE=10000
-
-## settings for peco
-_replace_by_history() {
-    local l=$(HISTTIMEFORMAT= history | cut -d" " -f4- | tac | sed -e 's/^\s*[0-9]*    \+\s\+//' | peco --query "$READLINE_LINE")
-    READLINE_LINE="$l"
-    READLINE_POINT=${#l}
-}
-bind -x '"\C-r": _replace_by_history'
-bind    '"\C-xr": reverse-search-history'
