@@ -21,4 +21,7 @@ gem install pry
 gem install awesome_print
 ln -s ~/.dotfiles/.pryrc ~/#{Rails.root}
 
+# if you want use fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 ```
