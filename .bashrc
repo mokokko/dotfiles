@@ -51,7 +51,7 @@ function share_history {
     history -c
     history -r
 }
-PROMPT_COMMAND="share_history;$PROMPT_COMMAND"
+export PROMPT_COMMAND="share_history;$PROMPT_COMMAND"
 shopt -u histappend
 # customize history
 HISTFILE=~/.bash_history
@@ -66,7 +66,9 @@ if [[ $IS_SCREEN ]]; then
   # screen
   prompt_screen='\[\033k\033\\\]'
 fi
-_PROMPT1='\[\e[0;36m\]\t \[\e[37m\]${USER}\[\e[32m\]@\h \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
+#_PROMPT1='\[\e[0;36m\]\t \[\e[37m\]${USER}- MAC dayo!(∩´∀｀)∩\[\e[32m\]@\h \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
+#_PROMPT1='\[\e[37m\]${USER}- MAC dayo!(∩´∀｀)∩\[\e[32m\]@\h \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
+_PROMPT1='\[\e[37m\]${USER}- \[\e[32m\]MAC dayo! (∩´∀｀)∩ \[\e[31m\]${?##0}\[\e[33m\]\w\[\e[0m\]'
 _PROMPT2="\\n$prompt_screen\$ "
 PS1=$_PROMPT1$_PROMPT2
 
@@ -90,25 +92,6 @@ source $SOURCE_DIR/.bash.d/git-completion.bash
 if [[ -r $SOURCE_DIR/.bash.d/completion-ruby/completion-ruby-all ]]; then
   source $SOURCE_DIR/.bash.d/completion-ruby/completion-ruby-all
 fi
-
-#### ruby
-cdgem () {
-  local bundle_gems="$(bundle list | grep '\*' | sed -e 's/^ *\* *//g')"
-  if [[ -n "$bundle_gems" ]]; then
-    gem=$(echo "$bundle_gems" | fzf --reverse | cut -d \  -f 1)
-    [[ -z "$gem" ]] && return 1
-    cd $(bundle show $gem)
-  else
-    gem=$(gem list | fzf --reverse | cut -d \  -f 1)
-    [[ -z "$gem" ]] && return 1
-    if ruby --version | grep 'ruby 2' >/dev/null; then
-      cd $(ruby -e 'puts Gem::Specification.find_by_name(ARGV[0]).full_gem_path' -- $gem)
-    else
-      cd $(ruby -e 'puts Gem.source_index.find_name(ARGV[0]).last.full_gem_path' -- $gem)
-    fi
-  fi
-}
-
 
 #### awscli
 if type -P aws_completer >/dev/null; then
@@ -197,7 +180,7 @@ function timer_stop {
   fi
 }
 trap 'timer_start' DEBUG
-PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/;;/;/')
+ PROMPT_COMMAND=$(echo -n "timer_stop; $PROMPT_COMMAND; unset timer" | sed -e 's/;;/;/')
 
 
 # iTerm background color
